@@ -8,6 +8,6 @@ class AboutTab extends StatefulWidget {
 class _AboutTabState extends State<AboutTab> {
   @override
   Widget build(BuildContext context) {
-    return Text("About Page .....");
+    return Center(child: Text("Favourite Page"));
   }
 }
