@@ -94,7 +94,7 @@ class _ConversionIoSelctionState extends State<ConversionIoSelction> {
                                   ? Colors.grey
                                   : Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 50),
+                              fontSize: 40),
                         ),
                         Icon(
                           Icons.arrow_forward_ios,
@@ -109,7 +109,7 @@ class _ConversionIoSelctionState extends State<ConversionIoSelction> {
                                   ? Colors.grey
                                   : Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 50),
+                              fontSize: 40),
                         )
                       ],
                     ),
@@ -199,11 +199,18 @@ class _ConversionIoSelctionState extends State<ConversionIoSelction> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
+                                    Icon(
+                                      Icons.signal_wifi_off,
+                                      color: Colors.grey,
+                                      size: 30,
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.all(15.0),
                                       child: Text(
                                         '${snapshot.error}',
                                         textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.grey, fontSize: 20),
                                       ),
                                     ),
                                     Padding(
@@ -303,6 +310,7 @@ class _ExpansionTileInputState extends State<ExpansionTileInput> {
                     onPressed: () {
                       setState(() {
                         selectedInput = input[index];
+                        selectedOutput = null;
                       });
                       widget.notifyParent();
                     },
@@ -336,7 +344,7 @@ class ExpansionTileOutput extends StatefulWidget {
 class _ExpansionTileOutputState extends State<ExpansionTileOutput> {
   @override
   Widget build(BuildContext context) {
-    List<String> input = widget.io.keys.toList();
+    Map<String, List<String>> ioList = widget.io;
     return Container(
       decoration: new BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
@@ -359,34 +367,46 @@ class _ExpansionTileOutputState extends State<ExpansionTileOutput> {
               ],
             ),
             children: <Widget>[
-              GridView.count(
-                shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
-                crossAxisCount: 3,
-                padding: const EdgeInsets.all(20.0),
-                mainAxisSpacing: 15,
-                crossAxisSpacing: 15,
-                childAspectRatio: MediaQuery.of(context).size.width /
-                    (MediaQuery.of(context).size.height / 4),
-                children: List.generate(input.length, (index) {
-                  return FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        selectedOutput = input[index];
-                      });
-                      widget.notifyParent();
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                    ),
-                    padding: EdgeInsets.all(10),
-                    child: Center(
-                        child: Text(
-                      input[index],
-                    )),
-                  );
-                }),
-              )
+              selectedInput == null
+                  ? Center(
+                      child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "Plz select input type",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ))
+                  : GridView.count(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      crossAxisCount: 3,
+                      padding: const EdgeInsets.all(20.0),
+                      mainAxisSpacing: 15,
+                      crossAxisSpacing: 15,
+                      childAspectRatio: MediaQuery.of(context).size.width /
+                          (MediaQuery.of(context).size.height / 4),
+                      children: List.generate(
+                          selectedInput == null
+                              ? 0
+                              : ioList[selectedInput].length, (index) {
+                        return FlatButton(
+                          onPressed: () {
+                            setState(() {
+                              selectedOutput = ioList[selectedInput][index];
+                            });
+                            widget.notifyParent();
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          child: Center(
+                              child: Text(
+                            ioList[selectedInput][index],
+                          )),
+                        );
+                      }),
+                    )
             ]),
       ),
     );

@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Scaffold(
         backgroundColor: Colors.grey,
         body: Container(
-          height: MediaQuery.of(context).size.height / 3,
+          height: MediaQuery.of(context).size.height / 2,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -57,13 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
+        padding: const EdgeInsets.fromLTRB(10, 110, 10, 10),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
-              top: Radius.circular(30),
+              top: Radius.circular(10),
             )),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             flexibleSpace: Center(
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           body: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
               color: Theme.of(context).scaffoldBackgroundColor,
             ),
             child: TabBarView(

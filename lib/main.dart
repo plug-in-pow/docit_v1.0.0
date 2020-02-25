@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:custom_splash/custom_splash.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // dart files import
 import 'myHomePage.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Function duringSplash = () {
     print('Dummy Print Statement ....');
     int a = 123 + 23;
@@ -19,6 +21,7 @@ void main() {
 
   Map<int, Widget> op = {1: MyApp()};
 
+  await DotEnv().load('.env');
   runApp(
     MaterialApp(
       home: Scaffold(
