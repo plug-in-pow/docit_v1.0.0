@@ -253,7 +253,7 @@ class _UploadScreenState extends State<UploadScreen> {
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.only(top: 44),
+                      padding: const EdgeInsets.only(top: 38),
                       child: SizedBox.fromSize(
                         size: Size(56, 56), // button width and height
                         child: ClipOval(

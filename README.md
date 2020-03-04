@@ -1,16 +1,31 @@
-# docit_v1_0_0
+# Docit
 
-A new Flutter project.
+DocIt is an android app made by using <b>flutter</b> for converting your favourite files.
 
-## Getting Started
+Check out the app [here](apk_file\app-release.apk)
 
-This project is a starting point for a Flutter application.
+## Screenshots
+<img src="lib/screenshots/flutter_01.png" height = 400></img>
+<img src="lib/screenshots/flutter_02.png" height = 400></img>
+<img src="lib/screenshots/flutter_03.png" height = 400></img>
+<img src="lib/screenshots/flutter_04.png" height = 400></img>
+<img src="lib/screenshots/flutter_05.png" height = 400></img>
+<img src="lib/screenshots/flutter_06.png" height = 400></img>
+<img src="lib/screenshots/flutter_07.png" height = 400></img>
 
-A few resources to get you started if this is your first Flutter project:
+## About Project
+This application is made by using flutterv1.12.13 + hotfix.5. Flutter is based on dart programming language, you can learn dart from [here](https://dart.dev/guides).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+For flutter documentation check out there official <a href="https://flutter.dev/docs">site</a>. 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For converting files we have used free api service from <b>CLOUDCONVERT</b>. Check out there [site](https://cloudconvert.com/).
+
+This application supports +200 file formats which can be converted to your desired file type.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

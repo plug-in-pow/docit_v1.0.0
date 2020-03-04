@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class SettingTab extends StatefulWidget {
@@ -10,6 +9,13 @@ class SettingTab extends StatefulWidget {
 }
 
 class _SettingTabState extends State<SettingTab> {
+  String appName = 'DocIT';
+  String version = '1.0.0';
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void lightTheme() {
     DynamicTheme.of(context).setBrightness(Brightness.light);
   }
@@ -90,9 +96,11 @@ class _SettingTabState extends State<SettingTab> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             color: const Color(0xFF3366FF),
-                            icon: Icon(Icons.link),
+                            icon: Icon(Icons.info),
                             label: Text("About App"),
-                            onPressed: _launchURL,
+                            onPressed: () {
+                              _showDialog();
+                            },
                           ),
                         ],
                       ),
@@ -107,12 +115,48 @@ class _SettingTabState extends State<SettingTab> {
     );
   }
 
-  void _launchURL() async {
-    const url = 'https://github.com/plug-in-pow/docit_v1.0.0';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("About App"),
+          content: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Image.asset(
+                  'assets/images/icons/logo.png',
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("App Name  :   " + appName),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Version  :   " + version),
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
