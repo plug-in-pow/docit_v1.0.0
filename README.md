@@ -2,7 +2,7 @@
 
 DocIt is an android app made by using <b>flutter</b> for converting your favourite files.
 
-Check out the app [here](apk_file\app-release.apk)
+Check out the app [here](https://github.com/plug-in-pow/docit_v1.0.0/blob/master/apk_file/app-release.apk)
 
 ## Screenshots
 <img src="lib/screenshots/flutter_01.png" height = 400></img>
