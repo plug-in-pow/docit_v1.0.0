@@ -50,9 +50,9 @@ Future<List<String>> createUploadJob(String inputType, String outputType,
         data: body);
 
     Map<String, dynamic> res = response.data;
-
     return await uploadFilePost(res, paths);
   } catch (e) {
+    print(e);
     if (e is DioError) {
       return Future.error(
           'Oops Something went wrong ! Plz check Internet connection.');
@@ -70,8 +70,8 @@ Future<List<String>> uploadFilePost(
   List<String> postUrl = [];
 
   for (var i = 0; i < paths.length; i++) {
-    parameters.add(res["data"]["tasks"][i + 1]["result"]["form"]["parameters"]);
-    postUrl.add(res["data"]["tasks"][i + 1]["result"]["form"]["url"]);
+    parameters.add(res["data"]["tasks"][i]["result"]["form"]["parameters"]);
+    postUrl.add(res["data"]["tasks"][i]["result"]["form"]["url"]);
 
     FormData formData = new FormData.fromMap({
       "expires": parameters[i]["expires"],
